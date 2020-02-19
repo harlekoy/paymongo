@@ -2,45 +2,81 @@
 
 namespace Harlekoy\Paymongo;
 
+use Harlekoy\Paymongo\OpenAPI\Payment;
+use Harlekoy\Paymongo\OpenAPI\Source;
+use Harlekoy\Paymongo\OpenAPI\Token;
+use Harlekoy\Paymongo\OpenAPI\Webhook;
+
 class Paymongo
 {
     /**
-     * Get Image Classification Model.
+     * @var \Harlekoy\Paymongo\OpenAPI\Token
+     */
+    protected $token;
+
+    /**
+     * @var \Harlekoy\Paymongo\OpenAPI\Payment
+     */
+    protected $payment;
+
+    /**
+     * @var \Harlekoy\Paymongo\OpenAPI\Source
+     */
+    protected $source;
+
+    /**
+     * @var \Harlekoy\Paymongo\OpenAPI\Webhook
+     */
+    protected $webhook;
+
+    /**
+     * Paymongo constructor.
+     */
+    public function __construct()
+    {
+        $this->token = new Token;
+        $this->payment = new Payment;
+        $this->source = new Source;
+        $this->webhook = new Webhook;
+    }
+
+    /**
+     * Get token APIs.
      *
-     * @return \Harlekoy\Nanonets\Classifications\Image
+     * @return  \Harlekoy\Paymongo\OpenAPI\Token
      */
     public function token()
     {
-        return new Token;
+        return $this->token;
     }
 
     /**
-     * Get OCR Model.
+     * Get payment APIs.
      *
-     * @return \Harlekoy\Nanonets\Classifications\OCR
+     * @return  \Harlekoy\Paymongo\OpenAPI\Payment
      */
     public function payment()
     {
-        return new Payment;
+        return $this->payment;
     }
 
     /**
-     * Get Object Detection Model.
+     * Get source APIs.
      *
-     * @return \Harlekoy\Nanonets\Classifications\Object
+     * @return  \Harlekoy\Paymongo\OpenAPI\Source
      */
     public function source()
     {
-        return new Source;
+        return $this->source;
     }
 
     /**
-     * Get Multi Label Classification Model.
+     * Get webhook APIs.
      *
-     * @return \Harlekoy\Nanonets\Classifications\MultiLabelImage
+     * @return \Harlekoy\Paymongo\OpenAPI\Webhook
      */
     public function webhook()
     {
-        return new Webhook;
+        return $this->webhook;
     }
 }

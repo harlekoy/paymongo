@@ -2,6 +2,7 @@
 
 namespace Harlekoy\Paymongo;
 
+use Harlekoy\Paymongo\Paymongo;
 use Illuminate\Support\ServiceProvider;
 
 class PaymongoServiceProvider extends ServiceProvider
@@ -31,6 +32,8 @@ class PaymongoServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'skeleton');
+        $this->app->singleton('paymongo', function ($app) {
+            return new Paymongo;
+        });
     }
 }

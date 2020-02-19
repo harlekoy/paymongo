@@ -1,14 +1,27 @@
 <?php
 
-namespace Harlekoy\Paymongo;
+namespace Harlekoy\Paymongo\OpenAPI;
 
 class Webhook extends BaseAPI
 {
+    /**
+     * Create a Webhook.
+     *
+     * @return [type] [description]
+     */
     public function create()
     {
         return $this->request('POST', '/webhooks');
     }
 
+    /**
+     * List all webhooks.
+     *
+     * Returns all the webhooks you previously created,
+     * with the most recent webhooks returned first.
+     *
+     * @return [type] [description]
+     */
     public function get()
     {
         return $this->request('GET', '/webhooks');

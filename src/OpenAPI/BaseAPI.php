@@ -42,10 +42,20 @@ class BaseAPI
             'json'    => $data,
             'headers' => [
                 'Content-Type'  => 'application/json',
-                'Authorization' => 'Basic '.base64_encode(env('PAYMONGO_SECRET')),
+                'Authorization' => 'Basic '.base64_encode($this->accessKey()),
             ],
         ])->getBody()->getContents();
 
         return json_decode($content, true);
+    }
+
+    /**
+     * Get access key.
+     *
+     * @return string
+     */
+    public function accessKey()
+    {
+        return config('services.paymongo.secret');
     }
 }

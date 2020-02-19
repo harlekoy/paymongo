@@ -1,11 +1,11 @@
 {
-    "name": "spatie/paymongo",
+    "name": "harlekoy/paymongo",
     "description": "Lavel API wrapper for Paymongo payment gateway",
     "keywords": [
         "spatie",
         "paymongo"
     ],
-    "homepage": "https://github.com/spatie/paymongo",
+    "homepage": "https://github.com/harlekoy/paymongo",
     "license": "MIT",
     "authors": [
         {
@@ -16,7 +16,8 @@
         }
     ],
     "require": {
-        "php": "^7.3"
+        "php": "^7.3",
+        "illuminate/support": "^6.16"
     },
     "require-dev": {
         "symfony/var-dumper": "^4.3",
@@ -24,12 +25,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Spatie\\Skeleton\\": "src"
+            "Harlekoy\\Paymongo\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Spatie\\Skeleton\\Tests\\": "tests"
+            "Harlekoy\\Paymongo\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -42,10 +43,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Spatie\\Skeleton\\SkeletonServiceProvider"
+                "Harlekoy\\Paymongo\\PaymongoServiceProvider"
             ],
             "aliases": {
-                "Skeleton": "Spatie\\Skeleton\\SkeletonFacade"
+                "Paymongo": "Harlekoy\\Paymongo\\Facades\\Paymongo"
             }
         }
     }

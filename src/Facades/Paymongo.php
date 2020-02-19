@@ -1,13 +1,13 @@
 <?php
 
-namespace Harlekoy\Paymongo;
+namespace Harlekoy\Paymongo\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
 /**
  * @see \Harlekoy\Paymongo\SkeletonClass
  */
-class SkeletonFacade extends Facade
+class Paymongo extends Facade
 {
     /**
      * Get the registered name of the component.
@@ -16,6 +16,6 @@ class SkeletonFacade extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return 'skeleton';
+        return 'paymongo';
     }
 }
