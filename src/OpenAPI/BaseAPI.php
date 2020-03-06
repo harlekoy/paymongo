@@ -3,6 +3,7 @@
 namespace Harlekoy\Paymongo\OpenAPI;
 
 use GuzzleHttp\Client;
+use Harlekoy\Paymongo\Http\Response;
 
 class BaseAPI
 {
@@ -46,7 +47,7 @@ class BaseAPI
             ],
         ])->getBody()->getContents();
 
-        return json_decode($content, true);
+        return new Response($this, json_decode($content, true));
     }
 
     /**
@@ -68,7 +69,7 @@ class BaseAPI
     public function payload($data)
     {
         if (Arr::has($data, 'amount')) {
-            $data['amount'] = ceil(Arr::get($data, 'amount', 0) * 100);
+            $data['amount'] = intval(floor(Arr::get($data, 'amount', 0) * 100));
         }
 
         return $data;

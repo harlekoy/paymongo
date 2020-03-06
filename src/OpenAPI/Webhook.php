@@ -7,7 +7,8 @@ class Webhook extends BaseAPI
     /**
      * Create a Webhook.
      *
-     * @return [type] [description]
+     * @param array $attribute
+     * @return \Harlekoy\Paymongo\Http\Response
      */
     public function create($attributes)
     {
@@ -22,35 +23,58 @@ class Webhook extends BaseAPI
      * Returns all the webhooks you previously created,
      * with the most recent webhooks returned first.
      *
-     * @return [type] [description]
+     * @return \Harlekoy\Paymongo\Http\Response
      */
     public function get()
     {
         return $this->request('GET', '/webhooks');
     }
 
-    public function enable()
+    /**
+     * Retrieve specific webhook.
+     *
+     * @param  string $id
+     * @return \Harlekoy\Paymongo\Http\Response
+     */
+    public function find($id)
     {
-        return $this->request('POST', "/webhooks/{$webhook}/enable");
+        return $this->request('GET', "/webhooks/{$id}");
+    }
+
+    /**
+     * Enable a Webhook.
+     *
+     * @param  string $id
+     * @return \Harlekoy\Paymongo\Http\Response
+     */
+    public function enable($id)
+    {
+        return $this->request('POST', "/webhooks/{$id}/enable");
     }
 
     /**
      * Disable a Webhook.
      *
-     * @return [type] [description]
+     * @param string $id
+     * @return \Harlekoy\Paymongo\Http\Response
      */
-    public function disable()
+    public function disable($id)
     {
-        return $this->request('POST', "/webhooks/{$webhook}/disable");
+        return $this->request('POST', "/webhooks/{$id}/disable");
     }
 
     /**
      * Update a Webhook.
      *
-     * @return [type] [description]
+     * @param string $id
+     * @param array $attributes
+     *
+     * @return \Harlekoy\Paymongo\Http\Response
      */
-    public function update()
+    public function update($id, $attributes)
     {
-        return $this->request('PUT', "/webhooks");
+        return $this->request('PUT', "/webhooks/{$id}", [
+            'data' => compact('attributes'),
+        ]);
     }
 }

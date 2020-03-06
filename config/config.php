@@ -25,7 +25,10 @@ return [
      */
     'signer' => \Harlekoy\Paymongo\Signer\DefaultSigner::class,
 
-    'webhook_signature' => env('PAYMONGO_WEBHOOK_SIG', 'whsk_35UDwwNbFFpCaGrrernoM8A3'),
+    /**
+     * Paymongo webhook signature secret
+     */
+    'webhook_signature' => env('PAYMONGO_WEBHOOK_SIG'),
 
     /*
      * This is the name of the header where the signature will be added.

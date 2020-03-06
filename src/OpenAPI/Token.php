@@ -28,9 +28,9 @@ class Token extends BaseAPI
      * followed by a unique hash representing the token.
      *
      * @param  string $token
-     * @return [type] [description]
+     * @return \Harlekoy\Paymongo\Http\Response
      */
-    public function retrieve($token)
+    public function find($token)
     {
         return $this->request('GET', "/tokens/{$token}");
     }
@@ -40,7 +40,7 @@ class Token extends BaseAPI
      * customer'scredit card details.
      *
      * @param  string $attributes
-     * @return [type] [description]
+     * @return \Harlekoy\Paymongo\Http\Response
      */
     public function create($attributes)
     {

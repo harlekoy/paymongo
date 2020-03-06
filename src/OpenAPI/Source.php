@@ -7,7 +7,8 @@ class Source extends BaseAPI
     /**
      * Create a Source.
      *
-     * @return [type] [description]
+     * @param  array $attributes
+     * @return \Harlekoy\Paymongo\Http\Response
      */
     public function create($attributes)
     {

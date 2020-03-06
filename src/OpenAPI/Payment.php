@@ -14,7 +14,8 @@ class Payment extends BaseAPI
     /**
      * Creates a Payment you can attach a Token or Source to
      *
-     * @return [type] [description]
+     * @param array $attributes
+     * @return \Harlekoy\Paymongo\Http\Response
      */
     public function create($attributes)
     {
@@ -33,7 +34,7 @@ class Payment extends BaseAPI
      * Returns all the payments you previously created, with
      * the most recent payments returned first
      *
-     * @return [type] [description]
+     * @return \Harlekoy\Paymongo\Http\Response
      */
     public function get()
     {
@@ -47,10 +48,11 @@ class Payment extends BaseAPI
      * The prefix for the id is pay_ followed by a unique
      * hash representing the payment.
      *
-     * @return [type] [description]
+     * @param string $id
+     * @return \Harlekoy\Paymongo\Http\Response
      */
-    public function retrieve()
+    public function find($id)
     {
-        return $this->request('POST', "/payments/{$payment}");
+        return $this->request('POST', "/payments/{$id}");
     }
 }
