@@ -20,9 +20,9 @@ class Payment extends BaseAPI
     {
         return $this->request('POST', '/payments', [
             'data' => [
-                'attributes' => array_merge([
+                'attributes' => $this->payload(array_merge([
                     'currency' => 'PHP',
-                ], $attributes)
+                ], $attributes))
             ],
         ]);
     }

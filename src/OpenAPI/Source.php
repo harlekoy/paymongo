@@ -9,8 +9,14 @@ class Source extends BaseAPI
      *
      * @return [type] [description]
      */
-    public function create()
+    public function create($attributes)
     {
-        return $this->request('POST', '/sources');
+        return $this->request('POST', '/sources', [
+            'data' => [
+                'attributes' => $this->payload(array_merge([
+                    'currency' => 'PHP',
+                ], $attributes))
+            ],
+        ]);
     }
 }

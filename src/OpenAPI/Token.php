@@ -60,6 +60,6 @@ class Token extends BaseAPI
      */
     public function accessKey()
     {
-        return config('services.paymongo.key');
+        return config('paymongo.public_key');
     }
 }

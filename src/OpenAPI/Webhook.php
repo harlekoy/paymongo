@@ -9,9 +9,11 @@ class Webhook extends BaseAPI
      *
      * @return [type] [description]
      */
-    public function create()
+    public function create($attributes)
     {
-        return $this->request('POST', '/webhooks');
+        return $this->request('POST', '/webhooks', [
+            'data' => compact('attributes'),
+        ]);
     }
 
     /**

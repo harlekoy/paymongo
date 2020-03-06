@@ -56,6 +56,21 @@ class BaseAPI
      */
     public function accessKey()
     {
-        return config('services.paymongo.secret');
+        return config('paymongo.secret_key');
+    }
+
+    /**
+     * Prepare payload.
+     *
+     * @param  array $data
+     * @return array
+     */
+    public function payload($data)
+    {
+        if (Arr::has($data, 'amount')) {
+            $data['amount'] = ceil(Arr::get($data, 'amount', 0) * 100);
+        }
+
+        return $data;
     }
 }
